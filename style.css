@@ -1,111 +1,144 @@
+/* ----- GENERAL ----- */
 body {
     font-family: 'Inter', sans-serif;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1200px; /* Largeur maximale pour le contenu */
+    margin: 0 auto; /* Centre le contenu horizontalement */
+    padding: 0 20px; /* Ajoute un peu d'espace sur les côtés */
 }
 
 /* ----- HEADER ----- */
-nav {
-    font-size: 16px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    color: #000000;
-}
-
 header {
-    justify-content: space-between;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 60px;
-    width: 90%;
+    margin-top: 40px;
+    margin-bottom: 80px; /* Espace entre le header et le main */
     height: 80px;   
 }
 
-header ul {
+header nav ul {
     list-style: none;
     display: flex;
-    gap: 50px;
+    gap: 40px;
     margin: 0;
+    padding: 0;
 }
 
-nav ul li a {
-  position: relative;
-  text-decoration: none;
-  padding: 10px 20px;
-  color: black;
+header nav a {
+    position: relative;
+    text-decoration: none;
+    padding: 10px 0; /* Padding vertical uniquement */
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
 }
 
-nav ul li a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: black;
-  transition: width 0.3s ease;
+header nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Centre le trait */
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: width 0.3s ease;
 }
 
-nav ul li a:hover::after {
-  width: 100%;
+header nav a:hover::after,
+header nav a.active::after {
+    width: 100%;
 }
-
-nav ul li a.active::after {
-  width: 100%;
-}
-
 
 /* ----- MAIN ----- */
-main {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -25px;
-    width: 90%;
-    height: 500px;   
+.about {
+    display: flex; /* Active Flexbox pour créer les colonnes */
+    align-items: center; /* Centre verticalement les colonnes */
+    justify-content: space-between; /* Espace entre les colonnes */
+    gap: 60px; /* Espace fixe entre les colonnes */
 }
-.about .Hosea, .Razanadrakoto {
-    font-size: 70px;
+
+.about-text {
+    flex: 1; /* Prend l'espace disponible */
+    max-width: 550px; /* Limite la largeur du texte */
+}
+
+.about-image {
+    flex: 1; /* Prend l'espace disponible */
+    text-align: right; /* Aligne l'image à droite dans sa colonne */
+}
+
+.about-image img {
+    max-width: 100%; /* L'image ne dépassera jamais son conteneur */
+    height: auto; /* Garde les proportions de l'image */
+    border-radius: 8px; /* Bords légèrement arrondis comme sur le design */
+}
+
+.name {
+    font-size: 60px;
     font-weight: 600;
+    line-height: 1.0;
+    margin-top: 0;
+    margin-bottom: auto;
 }
 
-.Razanadrakoto {
-    margin-left: 35px;
-    margin-top: -70px;
+/* A AJOUTER : style pour chaque ligne du nom */
+.name .line-1 {
+    display: block; /* Force le passage à la ligne */
 }
 
-.profil {
-    margin-top: -220px;
-    margin-left: 840px;
+.name .line-2 {
+    display: block; /* Est déjà un bloc, mais pour être sûr */
+    margin-left: 35px; /* CRÉE LE DÉCALAGE ! */
 }
 
-.text_1 {
-    width: 40%;
-    font-size: 20px;
+.about-text p {
+    font-size: 18px;
     font-weight: 400;
-    margin-top: -450px;
-    margin-left: 50px;
+    line-height: 1.6; /* Améliore la lisibilité */
+    margin-bottom: 20px;
 }
 
-.text_2 {
-    width: 40%;
-    font-size: 20px;
-    font-weight: 400;
-    /* margin-top: -100px; */
-    margin-left: 50px;
-}
-
+/* ----- FOOTER ----- */
 footer {
     text-align: center;
-    margin-bottom: 20px;
-    margin-top: 350px;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espace entre les icônes */
 }
 
-.reseau {
-    padding: 25px;
-    padding-top: 0;
-    padding-bottom: 0;
+/* ----- RESPONSIVE DESIGN ----- */
+/* Pour les tablettes et les mobiles (écrans de moins de 768px) */
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column; 
+        text-align: center; 
+    }
+
+    .about-image {
+        order: -1; 
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .name {
+        font-size: 48px; 
+    }
+    
+    /* A AJOUTER : On annule le décalage sur mobile pour que le nom soit centré */
+    .name .line-2 {
+        margin-left: 0;
+    }
+
+    .about-text p {
+        font-size: 16px;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
 }
