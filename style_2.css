@@ -50,6 +50,69 @@ header nav a.active::after {
     width: 100%;
 }
 
+/* ----- MAIN ----- */
+.about {
+    display: flex; /* Active Flexbox pour créer les colonnes */
+    align-items: center; /* Centre verticalement les colonnes */
+    justify-content: space-between; /* Espace entre les colonnes */
+    gap: 60px; /* Espace fixe entre les colonnes */
+}
+
+.about-text {
+    flex: 1; /* Prend l'espace disponible */
+    max-width: 550px; /* Limite la largeur du texte */
+}
+
+.about-image {
+    flex: 1; /* Prend l'espace disponible */
+    text-align: right; /* Aligne l'image à droite dans sa colonne */
+}
+
+.about-image img {
+    max-width: 100%; /* L'image ne dépassera jamais son conteneur */
+    height: auto; /* Garde les proportions de l'image */
+    border-radius: 8px; /* Bords légèrement arrondis comme sur le design */
+}
+
+.name {
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 1.0;
+    margin-top: 0;
+    margin-bottom: auto;
+}
+
+/* A AJOUTER : style pour chaque ligne du nom */
+.name .line-1 {
+    display: block; /* Force le passage à la ligne */
+}
+
+.name .line-2 {
+    display: block; /* Est déjà un bloc, mais pour être sûr */
+    margin-left: 35px; /* CRÉE LE DÉCALAGE ! */
+}
+
+.about-text p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6; /* Améliore la lisibilité */
+    margin-bottom: 20px;
+}
+
+.gallery {
+    display: grid; /* Active le mode grille */
+    /* Définit le nombre de colonnes et leur taille (ici, 3 colonnes égales) */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Espace entre les images (gouttière) */
+    padding: 20px;
+}
+
+.gallery_item img {
+    width: 100%; /* L'image remplit sa cellule de grille */
+    height: auto; /* Maintient le ratio de l'image */
+    display: block;
+}
+
 /* ----- FOOTER ----- */
 footer {
     text-align: center;
@@ -64,18 +127,23 @@ footer {
 /* Pour les tablettes et les mobiles (écrans de moins de 768px) */
 @media (max-width: 768px) {
     .about {
-        flex-direction: column; /* Les colonnes se placent l'une sous l'autre */
-        text-align: center; /* Centre le texte pour la vue mobile */
+        flex-direction: column; 
+        text-align: center; 
     }
 
     .about-image {
-        order: -1; /* Place l'image en premier */
+        order: -1; 
         margin-bottom: 40px;
         text-align: center;
     }
 
     .name {
-        font-size: 48px; /* Réduit la taille du titre */
+        font-size: 48px; 
+    }
+    
+    /* A AJOUTER : On annule le décalage sur mobile pour que le nom soit centré */
+    .name .line-2 {
+        margin-left: 0;
     }
 
     .about-text p {
